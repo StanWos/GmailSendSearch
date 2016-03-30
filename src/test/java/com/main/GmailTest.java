@@ -21,10 +21,10 @@ public class GmailTest {
 
         newMessage("stas.zoria@gmail.com", "test message");
 
-        inbox.click();
+        openInbox();
         ensureVisibleMail("Стас", "test message");
 
-        sentMail.click();
+        openSentMail();
         ensureVisibleMail("Стас", "test message");
 
         search.setValue("subject:(test message)").pressEnter();

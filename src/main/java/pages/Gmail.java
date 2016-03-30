@@ -22,11 +22,9 @@ public class Gmail {
     public static SelenideElement subjectBox = $(By.name("subjectbox"));
     public static SelenideElement send = $(byText("Send"));
 
-    public static SelenideElement inbox = $(By.partialLinkText("Inbox"));
     public static SelenideElement senderName = $("div>span");
     public static SelenideElement subjectMail = $(".xT b");
 
-    public static SelenideElement sentMail = $(By.linkText("Sent Mail"));
     public static SelenideElement search = $("#gbqfq");
     public static ElementsCollection arrivedResult = $$("tr.zA.zE");
 
@@ -41,4 +39,13 @@ public class Gmail {
         senderName.shouldHave(exactText(name));
         subjectMail.shouldHave(exactText(subject));
     }
+
+    public static void openInbox(){
+        $(By.partialLinkText("Inbox")).click();
+    }
+
+    public static void openSentMail(){
+        $(By.linkText("Sent Mail")).click();
+    }
+
 }
