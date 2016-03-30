@@ -2,7 +2,7 @@ package com.main;
 
 import static com.codeborne.selenide.Condition.visible;
 import com.codeborne.selenide.Configuration;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import static com.codeborne.selenide.Selenide.open;
 import static pages.Gmail.*;
@@ -10,7 +10,7 @@ import static pages.Gmail.*;
 
 public class GmailTest {
 
-    @BeforeClass
+    @Before
     public void setTimeout(){
         Configuration.timeout = 15000;
     }
