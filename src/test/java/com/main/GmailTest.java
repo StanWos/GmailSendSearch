@@ -1,8 +1,6 @@
 package com.main;
 
-import static com.codeborne.selenide.CollectionCondition.*;
-
-import com.codeborne.selenide.Condition;
+import static com.codeborne.selenide.Condition.visible;
 import com.codeborne.selenide.Configuration;
 import org.junit.Test;
 import static com.codeborne.selenide.Selenide.open;
@@ -19,7 +17,7 @@ public class GmailTest {
         open("https://mail.google.com/");
 
         email.setValue("stas.zoria").pressEnter();
-        password.setValue("function052364").pressEnter();
+        password.setValue("").pressEnter();
 
         newMessage("stas.zoria@gmail.com", "test message");
 
@@ -30,7 +28,7 @@ public class GmailTest {
         ensureVisibleMail("Стас", "test message");
 
         search.setValue("subject:(test message)").pressEnter();
-        arrivedResult.filter(Condition.visible).shouldHaveSize(1);
+        arrivedResult.filter(visible).shouldHaveSize(1);
     }
 
 }
