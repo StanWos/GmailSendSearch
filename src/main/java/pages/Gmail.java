@@ -26,7 +26,7 @@ public class Gmail {
     public static SelenideElement senderName = $("div>span");
     public static SelenideElement subjectMail = $(".xT b");
 
-    public static SelenideElement sent = $(By.linkText("Sent Mail"));
+    public static SelenideElement sentMail = $(By.linkText("Sent Mail"));
     public static SelenideElement search = $("#gbqfq");
     public static ElementsCollection arrivedResult = $$("tr.zA.zE");
 

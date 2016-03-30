@@ -24,7 +24,7 @@ public class GmailTest {
         inbox.click();
         ensureVisibleMail("Стас", "test message");
 
-        sent.click();
+        sentMail.click();
         ensureVisibleMail("Стас", "test message");
 
         search.setValue("subject:(test message)").pressEnter();
