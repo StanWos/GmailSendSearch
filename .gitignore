@@ -1,4 +1,5 @@
 .idea
 build
 target
+src.test.java.com.main.data
 *.iml

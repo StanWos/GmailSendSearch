@@ -1,51 +1,28 @@
 package pages;
 
-import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.open;
 
 /**
  * Created by stan on 30.03.16.
  */
 public class Gmail {
 
-    public static SelenideElement email = $("#Email");
-    public static SelenideElement password = $("#Passwd");
-
-    public static SelenideElement compose = $(byText("COMPOSE"));
-    public static SelenideElement recipientBox = $(By.name("to"));
-    public static SelenideElement subjectBox = $(By.name("subjectbox"));
-    public static SelenideElement send = $(byText("Send"));
-
-    public static SelenideElement senderName = $("div>span");
-    public static SelenideElement subjectMail = $(".xT b");
-
-    public static SelenideElement search = $("#gbqfq");
-    public static ElementsCollection arrivedResult = $$("tr.zA.zE");
-
-    public static void newMessage(String recipient, String subject){
-        compose.click();
-        recipientBox.setValue(recipient);
-        subjectBox.setValue(subject);
-        send.click();
+    static {
+        Configuration.timeout = 15000;
     }
 
-    public static void ensureVisibleMail(String name, String subject){
-        senderName.shouldHave(exactText(name));
-        subjectMail.shouldHave(exactText(subject));
+    public void visit(){
+        open("https://mail.google.com/");
     }
 
-    public static void openInbox(){
-        $(By.partialLinkText("Inbox")).click();
+    public void logIn(String email, String pass){
+        $("#Email").setValue(email).pressEnter();
+        $("#Passwd").setValue(pass).pressEnter();
     }
 
-    public static void openSentMail(){
-        $(By.linkText("Sent Mail")).click();
-    }
 
 }

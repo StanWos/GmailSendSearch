@@ -1,38 +1,38 @@
 package com.main;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import com.codeborne.selenide.Configuration;
-import org.junit.Before;
+
+import com.main.data.TestData;
 import org.junit.Test;
-import static com.codeborne.selenide.Selenide.open;
-import static pages.Gmail.*;
+import pages.Gmail;
+import pages.Mails;
+import pages.Menu;
 
 
 public class GmailTest {
 
-    @Before
-    public void setTimeout(){
-        Configuration.timeout = 15000;
-    }
+    Gmail gmail = new Gmail();
+    Mails mails = new Mails();
+    Menu menu = new Menu();
 
     @Test
     public void testGmailSendSearch(){
 
-        open("https://mail.google.com/");
+        gmail.visit();
 
-        email.setValue("stas.zoria").pressEnter();
-        password.setValue("").pressEnter();
+        gmail.logIn(TestData.email, TestData.pass);
 
-        newMessage("stas.zoria@gmail.com", "test message");
+        mails.newMessage("stas.zoria@gmail.com", mails.subjectText);
 
-        openInbox();
-        ensureVisibleMail("Стас", "test message");
+        menu.refresh();
+        mails.assertVisibleMail(mails.subjectText);
 
-        openSentMail();
-        ensureVisibleMail("Стас", "test message");
+        menu.openSentMail();
+        mails.assertVisibleMail(mails.subjectText);
 
-        search.setValue("subject:(test message)").pressEnter();
-        arrivedResult.filter(visible).shouldHaveSize(1);
+        mails.search.setValue("subject:(" + mails.subjectText +")").pressEnter();
+        mails.arrivedResult.filter(visible).find(text(mails.subjectText));
     }
 
 }
