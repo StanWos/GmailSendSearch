@@ -3,7 +3,6 @@ package com.main;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 
-import com.main.data.TestData;
 import org.junit.Test;
 import pages.Gmail;
 import pages.Mails;

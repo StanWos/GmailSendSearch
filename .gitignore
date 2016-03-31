@@ -1,5 +1,5 @@
 .idea
 build
 target
-src.test.java.com.main.data
+src.test.java.com.main.TestData
 *.iml

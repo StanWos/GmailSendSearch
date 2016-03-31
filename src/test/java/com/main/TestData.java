@@ -1,4 +1,4 @@
-package com.main.data;
+package com.main;
 
 /**
  * Created by stan on 31.03.16.
