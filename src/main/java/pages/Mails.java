@@ -18,6 +18,7 @@ public class Mails {
 
     public SelenideElement search = $(By.name("q"));
     public ElementsCollection arrivedResult = $$(".xT .y6");
+    public SelenideElement mailsCounter = $(".Dj b");
 
     final Random random = new Random();
 
@@ -32,6 +33,7 @@ public class Mails {
 
     public void assertVisibleMail(String subject){
         subjectMail.shouldHave(exactText(subject));
-    }
+        mailsCounter.shouldHave(exactText("1"));
+    } // надеюсь, я правильно понял тебя по поводу оперирования
 
 }
