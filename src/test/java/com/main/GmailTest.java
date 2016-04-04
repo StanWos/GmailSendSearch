@@ -2,9 +2,9 @@ package com.main;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.Test;
-import pages.Gmail;
-import pages.Mails;
-import pages.Menu;
+import pages.GmailPage;
+import pages.MailsPage;
+import pages.MenuPage;
 
 
 import static helpers.Helpers.subjectText;
@@ -16,9 +16,9 @@ public class GmailTest {
         Configuration.timeout = 15000;
     }
 
-    Gmail gmailPage = new Gmail();
-    Mails mailsPage = new Mails();
-    Menu menuPage = new Menu();
+    GmailPage gmailPage = new GmailPage();
+    MailsPage mailsPage = new MailsPage();
+    MenuPage menuPage = new MenuPage();
 
     @Test
     public void testGmailSendSearch(){
@@ -38,7 +38,7 @@ public class GmailTest {
         menuPage.openInbox();
         mailsPage.searchBySubject(subjectText);
 
-        mailsPage.assertVisibleMail(subjectText);
+        mailsPage.assertFilteringMail(subjectText);
     }
 
     String subjectText = subjectText();
