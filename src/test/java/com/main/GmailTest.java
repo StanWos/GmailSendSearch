@@ -1,37 +1,46 @@
 package com.main;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-
+import com.codeborne.selenide.Configuration;
 import org.junit.Test;
 import pages.Gmail;
 import pages.Mails;
 import pages.Menu;
 
 
+import static helpers.Helpers.subjectText;
+
+
 public class GmailTest {
 
-    Gmail gmail = new Gmail();
-    Mails mails = new Mails();
-    Menu menu = new Menu();
+    static {
+        Configuration.timeout = 15000;
+    }
+
+    Gmail gmailPage = new Gmail();
+    Mails mailsPage = new Mails();
+    Menu menuPage = new Menu();
 
     @Test
     public void testGmailSendSearch(){
 
-        gmail.visit();
+        gmailPage.visit();
 
-        gmail.logIn(TestData.email, TestData.pass);
+        gmailPage.logIn(TestData.email, TestData.password);
 
-        mails.newMessage("stas.zoria@gmail.com", mails.subjectText);
+        mailsPage.newMessage(TestData.email, subjectText);
 
-        menu.refresh();
-        mails.assertVisibleMail(mails.subjectText);
+        menuPage.refresh();
+        mailsPage.assertVisibleMail(subjectText);
 
-        menu.openSentMail();
-        mails.assertVisibleMail(mails.subjectText);
+        menuPage.openSentMail();
+        mailsPage.assertVisibleMail(subjectText);
 
-        mails.search.setValue("subject:(" + mails.subjectText +")").pressEnter();
-        mails.arrivedResult.filter(visible).find(text(mails.subjectText));
+        menuPage.openInbox();
+        mailsPage.searchBySubject(subjectText);
+
+        mailsPage.assertVisibleMail(subjectText);
     }
+
+    String subjectText = subjectText();
 
 }
