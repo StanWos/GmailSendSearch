@@ -22,7 +22,6 @@ public class MailsPage {
     }
 
     public void assertMail(int index, String subject){
-        index -= 1;
         listMails.get(index).shouldHave(text(subject));
     }
 

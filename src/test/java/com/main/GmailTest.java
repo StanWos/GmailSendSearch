@@ -30,10 +30,10 @@ public class GmailTest {
         mailsPage.newMessage(TestData.email, subjectText);
 
         menuPage.refresh();
-        mailsPage.assertMail(1, subjectText);
+        mailsPage.assertMail(0, subjectText);
 
         menuPage.openSentMail();
-        mailsPage.assertMail(1, subjectText);
+        mailsPage.assertMail(0, subjectText);
 
         menuPage.openInbox();
         mailsPage.searchBySubject(subjectText);
