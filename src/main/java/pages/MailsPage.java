@@ -5,7 +5,6 @@ import com.codeborne.selenide.ElementsCollection;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -13,7 +12,7 @@ import static com.codeborne.selenide.Selenide.$$;
 public class MailsPage {
 
 
-    public ElementsCollection listMails = $$(".zA");
+    public ElementsCollection listMails = $$("[role = 'main'] .zA");
 
     public void newMessage(String recipient, String subject){
         $(byText("COMPOSE")).click();
@@ -22,12 +21,15 @@ public class MailsPage {
         $(byText("Send")).click();
     }
 
-    public void assertVisibleMail(String subject){
-        listMails.get(0).shouldHave(text(subject));
+    public void assertMail(int index, String subject){
+        index -= 1;
+        listMails.get(index).shouldHave(text(subject));
     }
 
-    public void assertFilteringMail(String subject){
-        listMails.filterBy(visible).shouldHave(texts(subject));
+    public void assertMail(String... subject){
+        for(String text: subject){
+            listMails.shouldHave(texts(text));
+        }
     }
 
     public void searchBySubject(String subject){
