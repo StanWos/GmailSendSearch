@@ -7,7 +7,7 @@ import pages.MailsPage;
 import pages.MenuPage;
 
 
-import static helpers.Helpers.subjectText;
+import static helpers.Helpers.getUniqueText;
 
 
 public class GmailTest {
@@ -41,6 +41,6 @@ public class GmailTest {
         mailsPage.assertMail(subjectText);
     }
 
-    String subjectText = subjectText();
+    String subjectText = getUniqueText();
 
 }

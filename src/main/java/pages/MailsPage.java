@@ -26,9 +26,7 @@ public class MailsPage {
     }
 
     public void assertMail(String... subject){
-        for(String text: subject){
-            listMails.shouldHave(texts(text));
-        }
+        listMails.shouldHave(texts(subject));
     }
 
     public void searchBySubject(String subject){
