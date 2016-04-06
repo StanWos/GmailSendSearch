@@ -4,7 +4,7 @@ import java.util.Random;
 
 
 public class Helpers {
-    public static String getUniqueText() {
-        return "test message" + (new Random()).nextInt();
+    public static String getUniqueText(String prefix) {
+        return prefix + (new Random()).nextInt();
     }
 }

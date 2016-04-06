@@ -25,8 +25,8 @@ public class MailsPage {
         listMails.get(index).shouldHave(text(subject));
     }
 
-    public void assertMail(String... subject){
-        listMails.shouldHave(texts(subject));
+    public void assertMails(String... subjects){
+        listMails.shouldHave(texts(subjects));
     }
 
     public void searchBySubject(String subject){

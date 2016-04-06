@@ -38,9 +38,9 @@ public class GmailTest {
         menuPage.openInbox();
         mailsPage.searchBySubject(subjectText);
 
-        mailsPage.assertMail(subjectText);
+        mailsPage.assertMails(subjectText);
     }
 
-    String subjectText = getUniqueText();
+    String subjectText = getUniqueText("test message");
 
 }
